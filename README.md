@@ -1,30 +1,15 @@
-# React + TypeScript + Vite
+## 원티드 pre onboarding todo list
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### 요구사항
 
-Currently, two official plugins are available:
+1. input 창에 list1을 입력 후 Add 버튼을 누르면 input 창 하단에 list1 컴포넌트가 뜹니다.
+2. 각 list의 delete 버튼을 누르면 해당 list 컴포넌트가 삭제됩니다.
+3. 상태관리는 Redux를 사용해야 합니다.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 구현
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+[] 마크업 구현 (0.2h)
+[] 상태관리 구현 (1h)
+[] 기능 구현 (0.5h)
+[] 테스트 코드 작성 (2h)
+[] 리팩토링 (0.2h)
