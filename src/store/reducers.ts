@@ -12,7 +12,6 @@ const initialTodoListState: TodoListState = {
 };
 
 const todoListReducer = (state = initialTodoListState, action: ActionTypes) => {
-  console.log(state);
   switch (action.type) {
     case ADD_TODO:
       if (action.payload === "") return state;
