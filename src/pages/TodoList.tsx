@@ -1,32 +1,28 @@
 import { Button, Input } from "../components/common";
-import { useState, useRef } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { List } from "../components/List";
 
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../store";
+
+import { addTodo, deleteTodo, changeInput } from "../store/actions";
+
 export function ToDoList() {
-  const [inputValue, setInputValue] = useState<string>("");
-  const [listData, setListData] = useState<string[]>([]);
+  const lists = useSelector((state: RootState) => state.todoList.lists);
+  const inputData = useSelector((state: RootState) => state.todoList.inputData);
+  const dispatch = useDispatch();
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+  const onClickAdd = () => {
+    dispatch(addTodo(inputData));
+    inputRef.current?.focus();
   };
 
-  const initInput = () => {
-    setInputValue("");
-  };
-
-  const addClickHandler = () => {
-    if (inputValue === "") return;
-    setListData((prev) => [...prev, inputValue]);
-    initInput();
-    console.log(inputRef.current?.focus());
-  };
-
-  const deleteClickHandler = (index: number) => {
-    const newList = listData.filter((_, i) => i !== index);
-    setListData(newList);
+  const onDeleteAdd = (i: number) => {
+    dispatch(deleteTodo(i));
+    inputRef.current?.focus();
   };
 
   return (
@@ -36,18 +32,18 @@ export function ToDoList() {
         <InputWrapper>
           <Input
             ref={inputRef}
-            value={inputValue}
-            onChangeHandler={onChangeHandler}
+            value={inputData}
+            onChangeHandler={(e) => dispatch(changeInput(e.target.value))}
           />
-          <Button text="Add" onClickHandler={addClickHandler} />
+          <Button text="Add" onClickHandler={onClickAdd} />
         </InputWrapper>
 
         <Ul>
-          {listData.map((list, i) => (
+          {lists.map((list, i) => (
             <List
               text={list}
               index={i}
-              onClickHandler={deleteClickHandler}
+              onClickHandler={() => onDeleteAdd(i)}
               key={i}
             />
           ))}
